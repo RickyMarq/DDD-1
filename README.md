@@ -6,24 +6,21 @@ Identificar os subdomínios do projeto, classificá-los (Core, Supporting, Gener
 ---
 
 ## 1. Nome do Projeto
-**[Escreva o nome do sistema ou aplicação que está sendo modelado]**
+**[Orion AI]**
 
 ---
 
 ## 2. Objetivo Principal do Projeto
-**[Explique o propósito do sistema em uma ou duas frases]**  
-*Exemplo:* Facilitar o agendamento de consultas médicas online entre pacientes e médicos.
+Democratizar o acesso a dados contábeis e de negócios por meio de uma solução baseada em IA
 
 ---
 
 ## 3. Identificação dos Subdomínios
-Liste os subdomínios do sistema e classifique-os como **Core Domain**, **Supporting Subdomain** ou **Generic Subdomain**.
 
-| **Subdomínio**              | **Descrição**                                                                                      | **Tipo**         |
-|-----------------------------|--------------------------------------------------------------------------------------------------|------------------|
-| Ex.: Gestão de Consultas    | Gerencia o agendamento, consulta por vídeo e emissão de atestados e receitas.                   | Core Domain      |
-| Ex.: Cadastro de Usuários   | Gerencia o login, cadastro e permissões dos médicos e pacientes.                                | Supporting       |
-| Ex.: Pagamentos             | Processa pagamentos e repassa valores para médicos.                                             | Generic          |
+
+Subdomínio	Descrição	Tipo || 
+Processamento de Linguagem Natural	Interpreta perguntas em português e converte para consultas estruturadas de dados. Inclui análise de intenção, geração de SQL e validação de consultas.	Core Domain
+
 
 ---
 
