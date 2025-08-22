@@ -20,6 +20,17 @@ Democratizar o acesso a dados contábeis e de negócios por meio de uma soluçã
 
 Subdomínio	Descrição	Tipo || 
 Processamento de Linguagem Natural	Interpreta perguntas em português e converte para consultas estruturadas de dados. Inclui análise de intenção, geração de SQL e validação de consultas.	Core Domain
+| **Conectividade & Virtualização de Dados**        | Conecta DW/Datamarts/Data Lake, controla pushdown, caching de resultados e limites de custo.                              | **Supporting**  | Crítico ao funcionamento, mas não é diferencial competitivo.                       |
+| **Governança de Acesso a Dados (LGPD/ABAC/RBAC)** | Políticas por papel/atributo, masking de coluna, filtros por linha, trilha de auditoria.                                  | **Supporting**  | Regras sensíveis ao negócio, porém não exclusivas.                                 |
+| **Qualidade, Linhagem & Catálogo**                | Monitora freshness/completeza, rastreia linhagem, cataloga fontes certificadas.                                           | **Supporting**  | Essencial para confiança, mas não diferencia no mercado.                           |
+| **Sessão, Contexto & Workspaces**                 | Histórico de conversas, rascunhos, coleções compartilhadas, versões de consultas.                                         | **Supporting**  | Agrega usabilidade e colaboração, sem ser o “coração”.                             |
+| **Observabilidade da Plataforma**                 | Métricas de uso/perf/perfil de custos, logs de consultas, alertas operacionais.                                           | **Supporting**  | Necessário para operar/otimizar, não diferencia.                                   |
+| **Identidade & SSO**                              | Autenticação, SSO corporativo, provisionamento SCIM.                                                                      | **Generic**     | Commodity de mercado; melhor integrar (Azure AD/Okta/ADFS).                        |
+| **Mensageria & Notificações**                     | Entrega de alertas/relatórios (Email, Slack, Teams, Webhooks).                                                            | **Generic**     | Serviços padronizados com integrações maduras.                                     |
+| **Agendamento de Tarefas**                        | Schedules de relatórios e rotinas (cron, retries, SLAs).                                                                  | **Generic**     | Plataforma pronta é suficiente (Airflow/Cloud Scheduler).                          |
+| **Armazenamento de Arquivos**                     | Export/arquivo de relatórios, snapshots, anexos.                                                                          | **Generic**     | Infra comoditizada (S3/GCS/Azure Blob).                                            |
+| **Cache/Edge & Mensageria Técnica**               | Cache de resultados/efeitos N+1, filas para jobs pesados.                                                                 | **Generic**     | Infra padrão (Redis/Kafka/RabbitMQ).                                               |
+| **Runtime de LLM**                                | Provedores/serving de modelos (API externa ou on-prem).                                                                   | **Generic**     | O **uso** de LLM é commodity; o **como orquestrar** continua Core.                 |
 
 
 ---
@@ -43,6 +54,8 @@ Explique como os bounded contexts vão se comunicar. Use os padrões de comunica
 |------------------------------|-----------------------------|-----------------------------|-----------------------------------------------|
 | Contexto de Consultas        | Contexto de Pagamentos      | Mensageria (Evento)         | "Consulta Finalizada"                         |
 | Contexto de Cadastro          | Contexto de Consultas      | API                         | Obter informações de um Paciente pelo ID      |
+
+
 
 ---
 
