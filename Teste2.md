@@ -27,9 +27,6 @@ Democratizar o acesso a dados contábeis e de negócios por meio de uma soluçã
 | **Qualidade, Linhagem & Catálogo**       | Monitora freshness, completude, rastreia linhagem e certifica fontes.          | **Supporting**  | Garante confiança, mas não diferencia competitivamente. |
 | **Sessão, Contexto & Workspaces**        | Histórico de conversas, rascunhos, coleções compartilhadas e versões de consultas. | **Supporting**  | Melhora a experiência e colaboração, mas não é o coração do negócio. |
 | **Observabilidade da Plataforma**        | Métricas de uso, custo, performance e logs detalhados de consultas.            | **Supporting**  | Necessário para manter e otimizar a operação. |
-| **Identidade & SSO**                     | Autenticação, SSO corporativo, provisionamento SCIM.                           | **Generic**     | Commodity de mercado, melhor integrar soluções prontas (Okta, AD, Azure). |
-| **Mensageria & Notificações**            | Entrega de relatórios, alertas e mensagens via email/Slack/Teams.              | **Generic**     | Função padronizada com integrações prontas. |
-| **Agendamento de Tarefas**               | Execução programada de relatórios e rotinas automáticas.                       | **Generic**     | Infra já consolidada (Airflow, Cloud Scheduler). |
 | **Armazenamento de Arquivos**            | Export e arquivamento de relatórios, snapshots e anexos.                       | **Generic**     | Serviço comoditizado (S3, GCS, Azure Blob). |
 | **Cache/Filas Técnicas**                 | Cache de consultas, filas para jobs pesados e processamento assíncrono.        | **Generic**     | Infra padrão (Redis, Kafka, RabbitMQ). |
 | **Runtime de LLM**                       | Hospedagem/serving de modelos (API externa ou on-prem).                        | **Generic**     | O modelo é commodity, o diferencial está na orquestração (Core). |
