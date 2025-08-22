@@ -78,27 +78,19 @@ Explique como os bounded contexts vão se comunicar. Use os padrões de comunica
 ---
 
 ## 7. Estratégia de Desenvolvimento
-Para cada tipo de subdomínio, explique a abordagem para implementação:
-- **Core Domain:** Desenvolver internamente com foco total.
-- **Supporting Subdomain:** Desenvolver internamente ou parcialmente terceirizar.
-- **Generic Subdomain:** Usar ferramentas ou serviços de mercado.
 
-| **Subdomínio**                          | **Estratégia** | **Ferramentas ou Serviços (se aplicável)** |
-|-----------------------------------------|----------------|--------------------------------------------|
-| **Orquestração de Consulta Conversacional (Core)** | Build interno: motor de intenção, planner, guardrails e validação SQL. | LLM agnóstico via SDK; validação estática/dinâmica de SQL |
-| **Semântica de Negócio & Ontologia (Core)** | Build: catálogo de métricas, DSL semântica, testes de consistência. | dbt semantic layer / Cube / MetricFlow |
-| **Geração de Insights & Narrativas (Core)** | Build: templates, heurísticas, explicabilidade, “por que”/“e se”. | Python/Pandas/Scikit + libs NL generation |
-| **Conectividade & Virtualização de Dados (Supporting)** | Build com libs/plataformas. | SQLAlchemy, Trino/Presto |
-| **Governança de Acesso (Supporting)** | Build regras; integrar com policy engines. | Row/column-level security, OPA |
-| **Qualidade, Linhagem & Catálogo (Supporting)** | Build leve + integrar ferramentas. | OpenLineage, Amundsen, DataHub |
-| **Sessão, Contexto & Workspaces (Supporting)** | Build focado em UX/colaboração. | Customizado com versionamento leve |
-| **Observabilidade da Plataforma (Supporting)** | Build métricas de domínio + stack pronta. | Prometheus, Grafana, ELK/OTel |
-| **Identidade & SSO (Generic)** | Buy/Integrar. | Azure AD, Okta, ADFS |
-| **Mensageria & Notificações (Generic)** | Buy/Integrar. | Slack/Teams API, SendGrid |
-| **Agendamento de Tarefas (Generic)** | Buy/Integrar. | Airflow, Cloud Scheduler |
-| **Armazenamento de Arquivos (Generic)** | Buy/Integrar. | S3, GCS, Azure Blob |
-| **Cache/Filas Técnicas (Generic)** | Buy/Integrar. | Redis, Kafka, RabbitMQ |
-| **Runtime de LLM (Generic)** | Buy/Integrar (multi-provider). | OpenAI, Anthropic, Vertex, Ollama |
+**Critério geral:**  
+- **Core Domains** → Sempre **desenvolvimento interno** (diferencial competitivo).  
+- **Supporting** → Interno, mas aproveitando frameworks existentes.  
+- **Generic** → **Integração/compra** de soluções prontas de mercado.  
+
+| **Subdomínio** | **Estratégia** | **Ferramentas ou Serviços (se aplicável)** |
+|----------------|----------------|--------------------------------------------|
+| **Orquestração de Consulta Conversacional (Core)** | **Build interno completo**, garantindo controle sobre interpretação de intenção, geração e validação de consultas. | LLMs via SDK + validação própria de SQL |
+| **Semântica de Negócio & Ontologia (Core)** | **Build interno** com governança forte de métricas e vocabulário contábil. | dbt Semantic Layer / Catálogo interno |
+| **Geração de Insights & Narrativas (Core)** | **Build interno** com foco na experiência do usuário e valor de negócio. | Python/Pandas + libs de NLG |
+| **Conectividade & Virtualização de Dados (Supporting)** | **Interno**, aproveitando conectores já maduros para bancos e lakes. | SQLAlchemy, Trino/Presto |
+| **Infra Genérica (Armazenamento, Cache, Runtime de LLM)** | **Buy/Integrar**, pois são commodities de mercado. | S3/GCS, Redis/Kafka, OpenAI/Vertex |
 
 ---
 
