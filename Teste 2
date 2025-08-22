@@ -17,22 +17,22 @@ Democratizar o acesso a dados contábeis e de negócios por meio de uma soluçã
 
 ## 3. Identificação dos Subdomínios
 
-| **Subdomínio** | **Descrição** | **Tipo** | **Por quê está nessa categoria** |
-|----------------|---------------|----------|---------------------------------|
+| **Subdomínio**                           | **Descrição**                                                                 | **Tipo**       | **Por quê está nessa categoria** |
+|------------------------------------------|-------------------------------------------------------------------------------|----------------|----------------------------------|
 | **Orquestração de Consulta Conversacional** | Interpreta a pergunta em português, identifica intenção, seleciona fonte, gera SQL/DSL e aplica validações antes da execução. | **Core Domain** | Diferencial competitivo direto: transformar linguagem natural em consultas seguras. |
-| **Semântica de Negócio & Ontologia** | Vocabulário do negócio (métricas, dimensões, entidades) mapeado para tabelas e regras oficiais de cálculo. | **Core Domain** | Sustenta consistência e precisão das respostas; representa o “cérebro” do domínio. |
-| **Geração de Insights & Narrativas** | Pós-processa os resultados e gera insights, resumos executivos e recomendações acionáveis. | **Core Domain** | Traduz dados em decisões de negócio, entregando valor ao usuário. |
-| **Conectividade & Virtualização de Dados** | Conecta DW/Datamarts/Data Lake, controla pushdown, caching de resultados e limites de custo. | **Supporting** | Crítico para operação, mas não é diferencial de mercado. |
-| **Governança de Acesso a Dados (LGPD/ABAC/RBAC)** | Políticas de acesso por papel/atributo, masking de dados sensíveis, filtros por linha e auditoria. | **Supporting** | Essencial para compliance, porém não é exclusivo. |
-| **Qualidade, Linhagem & Catálogo** | Monitora freshness, completude, rastreia linhagem e certifica fontes. | **Supporting** | Garante confiança, mas não diferencia competitivamente. |
-| **Sessão, Contexto & Workspaces** | Histórico de conversas, rascunhos, coleções compartilhadas e versões de consultas. | **Supporting** | Melhora a experiência e colaboração, mas não é o coração do negócio. |
-| **Observabilidade da Plataforma** | Métricas de uso, custo, performance e logs detalhados de consultas. | **Supporting** | Necessário para manter e otimizar a operação. |
-| **Identidade & SSO** | Autenticação, SSO corporativo, provisionamento SCIM. | **Generic** | Commodity de mercado, melhor integrar soluções prontas (Okta, AD, Azure). |
-| **Mensageria & Notificações** | Entrega de relatórios, alertas e mensagens via email/Slack/Teams. | **Generic** | Função padronizada com integrações prontas. |
-| **Agendamento de Tarefas** | Execução programada de relatórios e rotinas automáticas. | **Generic** | Infra já consolidada (Airflow, Cloud Scheduler). |
-| **Armazenamento de Arquivos** | Export e arquivamento de relatórios, snapshots e anexos. | **Generic** | Serviço comoditizado (S3, GCS, Azure Blob). |
-| **Cache/Filas Técnicas** | Cache de consultas, filas para jobs pesados e processamento assíncrono. | **Generic** | Infra padrão (Redis, Kafka, RabbitMQ). |
-| **Runtime de LLM** | Hospedagem/serving de modelos (API externa ou on-prem). | **Generic** | O modelo é commodity, o diferencial está na orquestração (Core). |
+| **Semântica de Negócio & Ontologia**     | Vocabulário do negócio (métricas, dimensões, entidades) mapeado para tabelas e regras oficiais de cálculo. | **Core Domain** | Sustenta consistência e precisão das respostas; representa o “cérebro” do domínio. |
+| **Geração de Insights & Narrativas**     | Pós-processa os resultados e gera insights, resumos executivos e recomendações acionáveis. | **Core Domain** | Traduz dados em decisões de negócio, entregando valor ao usuário. |
+| **Conectividade & Virtualização de Dados** | Conecta DW/Datamarts/Data Lake, controla pushdown, caching de resultados e limites de custo. | **Supporting**  | Crítico para operação, mas não é diferencial de mercado. |
+| **Governança de Acesso a Dados (LGPD/ABAC/RBAC)** | Políticas de acesso por papel/atributo, masking de dados sensíveis, filtros por linha e auditoria. | **Supporting**  | Essencial para compliance, porém não é exclusivo. |
+| **Qualidade, Linhagem & Catálogo**       | Monitora freshness, completude, rastreia linhagem e certifica fontes.          | **Supporting**  | Garante confiança, mas não diferencia competitivamente. |
+| **Sessão, Contexto & Workspaces**        | Histórico de conversas, rascunhos, coleções compartilhadas e versões de consultas. | **Supporting**  | Melhora a experiência e colaboração, mas não é o coração do negócio. |
+| **Observabilidade da Plataforma**        | Métricas de uso, custo, performance e logs detalhados de consultas.            | **Supporting**  | Necessário para manter e otimizar a operação. |
+| **Identidade & SSO**                     | Autenticação, SSO corporativo, provisionamento SCIM.                           | **Generic**     | Commodity de mercado, melhor integrar soluções prontas (Okta, AD, Azure). |
+| **Mensageria & Notificações**            | Entrega de relatórios, alertas e mensagens via email/Slack/Teams.              | **Generic**     | Função padronizada com integrações prontas. |
+| **Agendamento de Tarefas**               | Execução programada de relatórios e rotinas automáticas.                       | **Generic**     | Infra já consolidada (Airflow, Cloud Scheduler). |
+| **Armazenamento de Arquivos**            | Export e arquivamento de relatórios, snapshots e anexos.                       | **Generic**     | Serviço comoditizado (S3, GCS, Azure Blob). |
+| **Cache/Filas Técnicas**                 | Cache de consultas, filas para jobs pesados e processamento assíncrono.        | **Generic**     | Infra padrão (Redis, Kafka, RabbitMQ). |
+| **Runtime de LLM**                       | Hospedagem/serving de modelos (API externa ou on-prem).                        | **Generic**     | O modelo é commodity, o diferencial está na orquestração (Core). |
 
 
 ## 4. Desenho dos Bounded Contexts
