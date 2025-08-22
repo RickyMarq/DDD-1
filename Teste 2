@@ -1,0 +1,104 @@
+# Dinâmica: Design Estratégico do Projeto
+
+## Objetivo
+Identificar os subdomínios do projeto, classificá-los (Core, Supporting, Generic) e desenhar os bounded contexts, incluindo suas interações. Esse exercício ajudará a criar uma visão clara e estratégica do domínio.
+
+---
+
+## 1. Nome do Projeto
+**[Orion AI]**
+
+---
+
+## 2. Objetivo Principal do Projeto
+Democratizar o acesso a dados contábeis e de negócios por meio de uma solução baseada em IA
+
+---
+
+## 3. Identificação dos Subdomínios
+
+| **Subdomínio** | **Descrição** | **Tipo** | **Por quê está nessa categoria** |
+|----------------|---------------|----------|---------------------------------|
+| **Orquestração de Consulta Conversacional** | Interpreta a pergunta em português, identifica intenção, seleciona fonte, gera SQL/DSL e aplica validações antes da execução. | **Core Domain** | Diferencial competitivo direto: transformar linguagem natural em consultas seguras. |
+| **Semântica de Negócio & Ontologia** | Vocabulário do negócio (métricas, dimensões, entidades) mapeado para tabelas e regras oficiais de cálculo. | **Core Domain** | Sustenta consistência e precisão das respostas; representa o “cérebro” do domínio. |
+| **Geração de Insights & Narrativas** | Pós-processa os resultados e gera insights, resumos executivos e recomendações acionáveis. | **Core Domain** | Traduz dados em decisões de negócio, entregando valor ao usuário. |
+| **Conectividade & Virtualização de Dados** | Conecta DW/Datamarts/Data Lake, controla pushdown, caching de resultados e limites de custo. | **Supporting** | Crítico para operação, mas não é diferencial de mercado. |
+| **Governança de Acesso a Dados (LGPD/ABAC/RBAC)** | Políticas de acesso por papel/atributo, masking de dados sensíveis, filtros por linha e auditoria. | **Supporting** | Essencial para compliance, porém não é exclusivo. |
+| **Qualidade, Linhagem & Catálogo** | Monitora freshness, completude, rastreia linhagem e certifica fontes. | **Supporting** | Garante confiança, mas não diferencia competitivamente. |
+| **Sessão, Contexto & Workspaces** | Histórico de conversas, rascunhos, coleções compartilhadas e versões de consultas. | **Supporting** | Melhora a experiência e colaboração, mas não é o coração do negócio. |
+| **Observabilidade da Plataforma** | Métricas de uso, custo, performance e logs detalhados de consultas. | **Supporting** | Necessário para manter e otimizar a operação. |
+| **Identidade & SSO** | Autenticação, SSO corporativo, provisionamento SCIM. | **Generic** | Commodity de mercado, melhor integrar soluções prontas (Okta, AD, Azure). |
+| **Mensageria & Notificações** | Entrega de relatórios, alertas e mensagens via email/Slack/Teams. | **Generic** | Função padronizada com integrações prontas. |
+| **Agendamento de Tarefas** | Execução programada de relatórios e rotinas automáticas. | **Generic** | Infra já consolidada (Airflow, Cloud Scheduler). |
+| **Armazenamento de Arquivos** | Export e arquivamento de relatórios, snapshots e anexos. | **Generic** | Serviço comoditizado (S3, GCS, Azure Blob). |
+| **Cache/Filas Técnicas** | Cache de consultas, filas para jobs pesados e processamento assíncrono. | **Generic** | Infra padrão (Redis, Kafka, RabbitMQ). |
+| **Runtime de LLM** | Hospedagem/serving de modelos (API externa ou on-prem). | **Generic** | O modelo é commodity, o diferencial está na orquestração (Core). |
+
+
+## 4. Desenho dos Bounded Contexts
+Liste e descreva os bounded contexts identificados no projeto. Explique a responsabilidade de cada um.
+
+| **Bounded Context**           | **Responsabilidade**                                                                                 | **Subdomínios Relacionados** |
+|-------------------------------|-----------------------------------------------------------------------------------------------------|-----------------------------|
+| Ex.: Contexto de Consultas    | Gerencia as consultas médicas, do agendamento à finalização, incluindo emissão de receitas.         | Gestão de Consultas         |
+| Ex.: Contexto de Pagamentos   | Processa cobranças de consultas e repasses para médicos ou clínicas.                              | Pagamentos                  |
+
+---
+
+## 5. Comunicação entre os Bounded Contexts
+Explique como os bounded contexts vão se comunicar. Use os padrões de comunicação, como:
+- **Mensageria/Eventos (desacoplado):** Ex.: O Contexto de Consultas emite um evento "Consulta Finalizada", consumido pelo Contexto de Pagamentos.
+- **APIs (síncrono):** Ex.: O Contexto de Pagamentos consulta informações de preços no Contexto de Consultas.
+
+| **De (Origem)**              | **Para (Destino)**          | **Forma de Comunicação**    | **Exemplo de Evento/Chamada**                  |
+|------------------------------|-----------------------------|-----------------------------|-----------------------------------------------|
+| Contexto de Consultas        | Contexto de Pagamentos      | Mensageria (Evento)         | "Consulta Finalizada"                         |
+| Contexto de Cadastro          | Contexto de Consultas      | API                         | Obter informações de um Paciente pelo ID      |
+
+
+
+---
+
+## 6. Definição da Linguagem Ubíqua
+Liste os termos principais da Linguagem Ubíqua do projeto. Explique brevemente cada termo.
+
+| **Termo**                    | **Descrição**                                                                                   |
+|------------------------------|-----------------------------------------------------------------------------------------------|
+| Ex.: Consulta                | Sessão médica entre paciente e médico.                                                       |
+| Ex.: Paciente                | Usuário que agenda e realiza consultas.                                                      |
+| Ex.: Receita                 | Prescrição médica gerada durante a consulta.                                                 |
+
+---
+
+## 7. Estratégia de Desenvolvimento
+Para cada tipo de subdomínio, explique a abordagem para implementação:
+- **Core Domain:** Desenvolver internamente com foco total.
+- **Supporting Subdomain:** Desenvolver internamente ou parcialmente terceirizar.
+- **Generic Subdomain:** Usar ferramentas ou serviços de mercado.
+
+| **Subdomínio**              | **Estratégia**                         | **Ferramentas ou Serviços (se aplicável)** |
+|-----------------------------|---------------------------------------|-------------------------------------------|
+| Gestão de Consultas         | Desenvolvimento interno               |                                           |
+| Cadastro de Usuários        | Interno com uso de Auth0 para login   | Auth0                                     |
+| Pagamentos                  | Terceirizar usando API Stripe         | Stripe                                    |
+
+---
+
+## 8. Diagrama Visual (Opcional, mas Recomendado)
+Desenhe um diagrama que mostre:
+- Os bounded contexts.
+- Como eles se comunicam.
+- A relação com os subdomínios.
+
+Use ferramentas como **Miro**, **Lucidchart** ou mesmo papel e caneta para criar seu diagrama e adicionar ao projeto.
+
+---
+
+## Dicas para Apresentação
+- Explique cada parte do design, focando no **Core Domain** (o coração do negócio).
+- Justifique por que certos subdomínios foram classificados como Supporting ou Generic.
+- Destaque como a comunicação entre bounded contexts foi pensada para ser escalável.
+
+---
+
+Boa sorte com a dinâmica! 🚀
