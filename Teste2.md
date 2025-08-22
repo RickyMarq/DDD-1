@@ -60,14 +60,24 @@ Explique como os bounded contexts vão se comunicar. Use os padrões de comunica
 ---
 
 ## 6. Definição da Linguagem Ubíqua
-Liste os termos principais da Linguagem Ubíqua do projeto. Explique brevemente cada termo.
 
-| **Termo**                    | **Descrição**                                                                                   |
-|------------------------------|-----------------------------------------------------------------------------------------------|
-| Ex.: Consulta                | Sessão médica entre paciente e médico.                                                       |
-| Ex.: Paciente                | Usuário que agenda e realiza consultas.                                                      |
-| Ex.: Receita                 | Prescrição médica gerada durante a consulta.                                                 |
-
+| **Termo**               | **Descrição** |
+|--------------------------|---------------|
+| **Consulta Natural**     | Pergunta em linguagem natural feita pelo usuário. |
+| **Plano de Execução**    | Estratégia gerada (fontes, filtros, joins, agregações) antes de rodar a consulta. |
+| **Métrica Oficial**      | Cálculo padronizado e governado (ex.: Receita Líquida). |
+| **Dimensão**             | Atributo de corte (ex.: Período, Produto, Segmento). |
+| **Fonte Certificada**    | Tabela/conjunto com selo de governança e SLA de qualidade. |
+| **Máscara de Dados**     | Regra de ocultação/parcialização (PII/PCI/LGPD). |
+| **Perfil de Acesso**     | Conjunto de permissões por papel/atributo (RBAC/ABAC). |
+| **Insight Automático**   | Achado relevante produzido pelo motor de análise. |
+| **Narrativa**            | Texto explicativo/Story dos dados em linguagem natural. |
+| **Workspace**            | Espaço colaborativo de consultas, painéis e coleções. |
+| **Sessão de Análise**    | Sequência de interações correlatas numa mesma investigação. |
+| **Tabela Fato/Dimensão** | Estruturas do modelo analítico (estrela/floco). |
+| **Steward de Dados**     | Responsável por definir/zelar por métricas e fontes. |
+| **Linha de Base (Baseline)** | Referência histórica usada em comparações (YoY/MoM). |
+| **Amostragem Segura**    | Execução com subset controlado para proteger custos/privacidade. |
 ---
 
 ## 7. Estratégia de Desenvolvimento
