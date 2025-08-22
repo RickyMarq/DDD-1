@@ -66,17 +66,17 @@ Explique como os bounded contexts vão se comunicar. Use os padrões de comunica
 ## 7. Estratégia de Desenvolvimento
 
 **Critério geral:**  
-- **Core Domains** → Sempre **desenvolvimento interno** (diferencial competitivo).  
-- **Supporting** → Interno, mas aproveitando frameworks existentes.  
-- **Generic** → **Integração/compra** de soluções prontas de mercado.  
+- **Core Domains** → Desenvolvimento interno (garantir diferencial competitivo e controle).  
+- **Supporting** → Interno, mas aproveitando ferramentas de mercado para acelerar.  
+- **Generic** → Integração/compra, pois não gera diferencial estratégico.  
 
 | **Subdomínio** | **Estratégia** | **Ferramentas ou Serviços (se aplicável)** |
 |----------------|----------------|--------------------------------------------|
-| **Orquestração de Consulta Conversacional (Core)** | **Build interno completo**, garantindo controle sobre interpretação de intenção, geração e validação de consultas. | LLMs via SDK + validação própria de SQL |
-| **Semântica de Negócio & Ontologia (Core)** | **Build interno** com governança forte de métricas e vocabulário contábil. | dbt Semantic Layer / Catálogo interno |
-| **Geração de Insights & Narrativas (Core)** | **Build interno** com foco na experiência do usuário e valor de negócio. | Python/Pandas + libs de NLG |
-| **Conectividade & Virtualização de Dados (Supporting)** | **Interno**, aproveitando conectores já maduros para bancos e lakes. | SQLAlchemy, Trino/Presto |
-| **Infra Genérica (Armazenamento, Cache, Runtime de LLM)** | **Buy/Integrar**, pois são commodities de mercado. | S3/GCS, Redis/Kafka, OpenAI/Vertex |
+| **Orquestração de Consulta Conversacional (Core)** | **Build interno completo**, controlando intenção, geração e validação de consultas. | LLM SDKs, validação SQL custom |
+| **Semântica de Negócio & Ontologia (Core)** | **Build interno** com foco em regras contábeis, métricas e vocabulário da empresa. | dbt Semantic Layer, catálogo interno |
+| **Geração de Insights & Narrativas (Core)** | **Build interno** para garantir relevância de insights e clareza nas narrativas. | Python/Pandas, libs de NLG |
+| **Observabilidade da Plataforma (Supporting)** | **Build interno leve** + ferramentas de mercado para monitoramento. | Prometheus, Grafana, ELK |
+| **Runtime de LLM (Generic)** | **Buy/Integrar**, escolhendo provedores multi-cloud ou on-prem. | OpenAI, Anthropic, Vertex, Ollama |
 
 ---
 
