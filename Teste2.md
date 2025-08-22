@@ -66,15 +66,7 @@ Explique como os bounded contexts vão se comunicar. Use os padrões de comunica
 | **Dimensão**             | Atributo de corte (ex.: Período, Produto, Segmento). |
 | **Fonte Certificada**    | Tabela/conjunto com selo de governança e SLA de qualidade. |
 | **Máscara de Dados**     | Regra de ocultação/parcialização (PII/PCI/LGPD). |
-| **Perfil de Acesso**     | Conjunto de permissões por papel/atributo (RBAC/ABAC). |
-| **Insight Automático**   | Achado relevante produzido pelo motor de análise. |
-| **Narrativa**            | Texto explicativo/Story dos dados em linguagem natural. |
 | **Workspace**            | Espaço colaborativo de consultas, painéis e coleções. |
-| **Sessão de Análise**    | Sequência de interações correlatas numa mesma investigação. |
-| **Tabela Fato/Dimensão** | Estruturas do modelo analítico (estrela/floco). |
-| **Steward de Dados**     | Responsável por definir/zelar por métricas e fontes. |
-| **Linha de Base (Baseline)** | Referência histórica usada em comparações (YoY/MoM). |
-| **Amostragem Segura**    | Execução com subset controlado para proteger custos/privacidade. |
 ---
 
 ## 7. Estratégia de Desenvolvimento
