@@ -38,15 +38,13 @@ Liste e descreva os bounded contexts identificados no projeto. Explique a respon
 
 ## 5. Comunicação entre os Bounded Contexts
 Explique como os bounded contexts vão se comunicar. Use os padrões de comunicação, como:
-- **Mensageria/Eventos (desacoplado):** Ex.: O Contexto de Consultas emite um evento "Consulta Finalizada", consumido pelo Contexto de Pagamentos.
-- **APIs (síncrono):** Ex.: O Contexto de Pagamentos consulta informações de preços no Contexto de Consultas.
 
-| **De (Origem)**              | **Para (Destino)**          | **Forma de Comunicação**    | **Exemplo de Evento/Chamada**                  |
-|------------------------------|-----------------------------|-----------------------------|-----------------------------------------------|
-| Contexto de Consultas        | Contexto de Pagamentos      | Mensageria (Evento)         | "Consulta Finalizada"                         |
-| Contexto de Cadastro          | Contexto de Consultas      | API                         | Obter informações de um Paciente pelo ID      |
-
-
+| De (Origem)                           | Para (Destino)                         | Forma de Comunicação   | Exemplo de Evento/Chamada   |
+|---------------------------------------|----------------------------------------|------------------------|-----------------------------|
+| Contexto de Orquestração de Consultas | Contexto de Planejamento & Validação   | API                    | "Gerar Plano de Execução"   |
+| Contexto de Planejamento & Validação  | Contexto de Semântica & Ontologia      | API                    | "Resolver Métricas/Dimensões" |
+| Contexto de Planejamento & Validação  | Contexto de Execução de Consultas      | API                    | "Executar Plano Validado"   |
+| Contexto de Execução de Consultas     | Contexto de Geração de Insights        | Mensageria (Evento)    | "Resultado Disponível"      |
 
 ---
 
